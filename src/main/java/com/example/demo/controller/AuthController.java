@@ -32,7 +32,7 @@ public class AuthController {
         user.setUsername(username);
         user.setPassword(password); // TODO: hash password before storing
         userService.save(user);
-        return "redirect:/";
+        return "redirect:/login";
     }
 
     @PostMapping("/login")
@@ -42,7 +42,7 @@ public class AuthController {
             session.setAttribute("user", userOpt.get());
             return "redirect:/search";
         }
-        return "redirect:/?error=Invalid";
+        return "redirect:/login?error=Invalid";
     }
 
     @GetMapping("/logout")
